@@ -73,7 +73,13 @@ namespace ServiceStack.Text
                 cachedRecords.Add(record);
             }
 
-            var headers = allKeys.OrderBy(key => key).ToList();
+            var headers = allKeys.ToList();
+            
+            if (CsvConfig<Dictionary<string, string>>.OrderHeadersAsc)
+                headers = headers.OrderBy(key => key).ToList();
+            else if(CsvConfig<Dictionary<string, string>>.OrderHeadersDesc)
+                headers = headers.OrderByDescending(key => key).ToList();
+
             if (!CsvConfig<Dictionary<string, string>>.OmitHeaders)
             {
                 WriteRow(writer, headers);

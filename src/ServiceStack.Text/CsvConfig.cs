@@ -125,7 +125,8 @@ namespace ServiceStack.Text
 	public static class CsvConfig<T>
 	{
 		public static bool OmitHeaders { get; set; }
-
+        public static bool OrderHeadersAsc { get; set; }
+        public static bool OrderHeadersDesc { get; set; }
 		private static Dictionary<string, string> customHeadersMap;
 		public static Dictionary<string, string> CustomHeadersMap
 		{
